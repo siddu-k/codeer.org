@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Basics 101 - Codeer</title>
+    <!-- 4 levels up -->
+    <link rel="icon" type="image/x-icon" href="../../../../assets/images/logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gugi&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../../../../assets/css/main.css">
+    <link rel="stylesheet" href="../../../../assets/css/components.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-con">
+            <div class="flex items-center gap-4">
+                <a href="../../../../index.html" class="flex items-center gap-2"
+                    style="font-family: var(--font-logo); font-size: 1.25rem; color: #fff;">
+                    <img src="../../../../assets/images/logo.png" width="24" height="24" alt="C"> CODEER
+                </a>
+                <div style="height: 24px; width: 1px; background: var(--border);"></div>
+                <div class="nav-links">
+                    <a href="../../../../home.html" class="nav-link">Dashboard</a>
+                    <a href="../../../../articles/index.html" class="nav-link active">Articles</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="section" style="padding-top: 6rem;">
+        <article class="container" style="max-width: 800px;">
+            <div class="badge mb-4">Software / Python</div>
+            <h1 class="mb-4">Python Basics 101</h1>
+
+            <div class="flex items-center gap-4 mb-4" style="color: var(--text-dim); font-size: 0.9rem;">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="user" width="16"></i> rahul-dev
+                </div>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="calendar" width="16"></i> January 15, 2026
+                </div>
+            </div>
+
+            <div style="height: 1px; background: var(--border); margin: 2rem 0;"></div>
+
+            <div class="content" style="font-size: 1.1rem; line-height: 1.8;">
+                <p>Python is a high-level, interpreted language known for its readability. In this guide, we'll cover
+                    the absolute basics.</p>
+                <br>
+                <h3>Variables and Data Types</h3>
+                <p>Python variables do not need explicit declaration to reserve memory space. The declaration happens
+                    automatically when you assign a value to a variable.</p>
+                <code
+                    style="display: block; background: #111; padding: 1rem; border-radius: 6px; font-family: monospace; margin: 1rem 0;">
+                    x = 5<br>
+                    y = "Hello"<br>
+                    print(y)
+                </code>
+            </div>
+        </article>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

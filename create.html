@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create - Codeer</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gugi&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        .selection-card {
+            cursor: pointer;
+            border-color: var(--border);
+        }
+
+        .selection-card.active {
+            border-color: #fff;
+            background: var(--glass);
+        }
+
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-con">
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="flex items-center gap-2"
+                    style="font-family: var(--font-logo); font-size: 1.25rem; color: #fff;">
+                    <img src="assets/images/logo.png" width="24" height="24" alt="C"> CODEER
+                </a>
+                <div style="height: 24px; width: 1px; background: var(--border);"></div>
+                <div class="nav-links">
+                    <a href="home.html" class="nav-link">Dashboard</a>
+                    <a href="guide/index.html" class="nav-link">Guide</a>
+                    <a href="articles/index.html" class="nav-link">Articles</a>
+                    <a href="projects/index.html" class="nav-link">Projects</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="section" style="padding-top: 6rem;">
+        <div class="container" style="max-width: 900px;">
+            <div class="mb-4">
+                <h2>Create Content</h2>
+                <p>Select a content type to contribute to the platform.</p>
+            </div>
+
+            <!-- Type Selection -->
+            <div class="grid grid-4 mb-4">
+                <div class="card selection-card active" onclick="selectType('article', this)">
+                    <div class="card-icon"><i data-lucide="file-text"></i></div>
+                    <h4>Article</h4>
+                </div>
+                <div class="card selection-card" onclick="selectType('profile', this)">
+                    <div class="card-icon"><i data-lucide="user"></i></div>
+                    <h4>Profile</h4>
+                </div>
+                <div class="card selection-card" onclick="selectType('project', this)">
+                    <div class="card-icon"><i data-lucide="rocket"></i></div>
+                    <h4>Project</h4>
+                </div>
+                <!-- Guide Link -->
+                <a href="guide/index.html" class="type-card" style="text-decoration: none;">
+                    <i data-lucide="book-open"></i>
+                    <h3>User Guide</h3>
+                    <p>Learn how to use Codeer.</p>
+                </a>
+            </div>
+            <!-- Article Form -->
+            <div id="form-article" class="form-section active card">
+                <h3 class="mb-4">New Article</h3>
+                <form onsubmit="generateArticle(event)">
+                    <div class="form-group">
+                        <label class="label">Article Title</label>
+                        <input type="text" id="art-title" class="input" required
+                            placeholder="e.g. Deploying Microservices on AWS">
+                    </div>
+
+                    <div class="grid grid-2">
+                        <div class="form-group">
+                            <label class="label">Author (GitHub Username)</label>
+                            <input type="text" id="art-author" class="input" required placeholder="octocat">
+                        </div>
+                        <div class="form-group">
+                            <label class="label">Category</label>
+                            <select id="art-category" class="select">
+                                <optgroup label="Cloud">
+                                    <option value="Cloud/AWS">AWS</option>
+                                    <option value="Cloud/Kubernetes">Kubernetes</option>
+                                    <option value="Cloud/Azure">Azure</option>
+                                </optgroup>
+                                <optgroup label="Software">
+                                    <option value="Software/Python">Python</option>
+                                    <option value="Software/JavaScript">JavaScript</option>
+                                    <option value="Software/Java">Java</option>
+                                </optgroup>
+                                <optgroup label="AI & ML">
+                                    <option value="AI/Machine-Learning">Machine Learning</option>
+                                    <option value="AI/Deep-Learning">Deep Learning</option>
+                                    <option value="AI/MLOps">MLOps</option>
+                                </optgroup>
+                                <optgroup label="Blockchain">
+                                    <option value="Blockchain/Ethereum">Ethereum</option>
+                                    <option value="Blockchain/Solana">Solana</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label">Content</label>
+                        <div class="editor-container">
+                            <div class="editor-toolbar">
+                                <button type="button" class="toolbar-btn" onclick="formatDoc('bold')" title="Bold"><i
+                                        data-lucide="bold" width="16"></i></button>
+                                <button type="button" class="toolbar-btn" onclick="formatDoc('italic')"
+                                    title="Italic"><i data-lucide="italic" width="16"></i></button>
+                                <button type="button" class="toolbar-btn" onclick="formatDoc('formatBlock', 'h2')"
+                                    title="Header 2"><i data-lucide="heading-2" width="16"></i></button>
+                                <button type="button" class="toolbar-btn" onclick="formatDoc('formatBlock', 'h3')"
+                                    title="Header 3"><i data-lucide="heading-3" width="16"></i></button>
+                                <div style="width: 1px; background: var(--border); margin: 0 4px;"></div>
+                                <button type="button" class="toolbar-btn" onclick="formatDoc('insertUnorderedList')"
+                                    title="List"><i data-lucide="list" width="16"></i></button>
+                                <button type="button" class="toolbar-btn" onclick="formatDoc('formatBlock', 'pre')"
+                                    title="Code Block"><i data-lucide="code" width="16"></i></button>
+                                <button type="button" class="toolbar-btn"
+                                    onclick="formatDoc('formatBlock', 'blockquote')" title="Quote"><i
+                                        data-lucide="blockquote" width="16"></i></button>
+                            </div>
+                            <div id="editor" class="editor-content" contenteditable="true"
+                                placeholder="Start writing your article...">
+                                <p>Start writing your article here...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <i data-lucide="download"></i> Generate & Download
+                    </button>
+                </form>
+            </div>
+
+            <!-- Profile Generator -->
+            <div id="form-profile" class="form-section card">
+                <h3 class="mb-4">Create Profile</h3>
+                <p class="mb-4">Generate your developer profile page.</p>
+
+                <form onsubmit="generateProfile(event)">
+                    <div class="grid grid-2">
+                        <div class="form-group">
+                            <label class="label">Full Name</label>
+                            <input type="text" id="prof-name" class="input" placeholder="Siddu K" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="label">Initials (2 chars)</label>
+                            <input type="text" id="prof-initials" class="input" placeholder="SK" maxlength="2" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label">Role / Title</label>
+                        <input type="text" id="prof-role" class="input" placeholder="Cloud Architect" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label">Bio</label>
+                        <textarea id="prof-bio" class="textarea" rows="3"
+                            placeholder="Short description about yourself..." required></textarea>
+                    </div>
+
+                    <h4 class="mb-2 mt-4">Social Links</h4>
+                    <div class="grid grid-2">
+                        <div class="form-group">
+                            <label class="label">GitHub Username</label>
+                            <input type="text" id="prof-github" class="input" placeholder="siddu-k">
+                        </div>
+                        <div class="form-group">
+                            <label class="label">Twitter Handle</label>
+                            <input type="text" id="prof-twitter" class="input" placeholder="@siddu_k">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mt-4">
+                        <i data-lucide="download"></i> Generate Profile
+                    </button>
+                </form>
+            </div>
+
+            <!-- Project Generator -->
+            <div id="form-project" class="form-section card">
+                <h3 class="mb-4">Submit Project</h3>
+                <p class="mb-4">Showcase your open source project.</p>
+
+                <form onsubmit="generateProject(event)">
+                    <div class="grid grid-2">
+                        <div class="form-group">
+                            <label class="label">Project Name</label>
+                            <input type="text" id="proj-name" class="input" placeholder="Terraform AWS Lab" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="label">Category</label>
+                            <select id="proj-category" class="select">
+                                <option value="Infrastructure">Infrastructure</option>
+                                <option value="Web App">Web App</option>
+                                <option value="Mobile">Mobile</option>
+                                <option value="AI/ML">AI/ML</option>
+                                <option value="Library">Library</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label">Short Description</label>
+                        <input type="text" id="proj-desc" class="input" placeholder="Brief tagline..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label">GitHub Repo URL</label>
+                        <input type="url" id="proj-repo" class="input" placeholder="https://github.com/user/repo">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label">Project README (Mini Editor)</label>
+                        <div class="editor-container" style="min-height: 200px;">
+                            <div class="editor-toolbar">
+                                <button type="button" class="toolbar-btn" onclick="formatDoc('bold')" title="Bold"><i
+                                        data-lucide="bold" width="16"></i></button>
+                                <button type="button" class="toolbar-btn" onclick="formatDoc('italic')"
+                                    title="Italic"><i data-lucide="italic" width="16"></i></button>
+                                <button type="button" class="toolbar-btn" onclick="formatDoc('insertUnorderedList')"
+                                    title="List"><i data-lucide="list" width="16"></i></button>
+                            </div>
+                            <div id="proj-readme" class="editor-content" contenteditable="true"
+                                style="min-height: 200px;">
+                                <p>Describe your project features here...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <i data-lucide="download"></i> Generate Project Page
+                    </button>
+                </form>
+            </div>
+
+
+
+        </div>
+    </main>
+
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/create.js"></script>
+    <script>
+        lucide.createIcons();
+
+        function selectType(type, element) {
+            // Update cards
+            document.querySelectorAll('.selection-card').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+
+            // Update forms
+            document.querySelectorAll('.form-section').forEach(el => el.classList.remove('active'));
+            document.getElementById('form-' + type).classList.add('active');
+        }
+    </script>
+</body>
+
+</html>

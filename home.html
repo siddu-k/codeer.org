@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Codeer</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gugi&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        .activity-graph {
+            display: flex;
+            align-items: flex-end;
+            gap: 4px;
+            height: 60px;
+            padding: 10px 0;
+        }
+
+        .activity-bar {
+            flex: 1;
+            background: var(--bg-card-hover);
+            border-radius: 2px;
+            transition: height 0.3s ease, background 0.3s ease;
+        }
+
+        .activity-bar:hover {
+            background: var(--accent);
+        }
+
+        .trend-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+
+        .trend-card:last-child {
+            border-bottom: none;
+        }
+
+        .trend-card:hover {
+            background: var(--bg-card-hover);
+        }
+
+        .trend-rank {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dim);
+            width: 24px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-con">
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="flex items-center gap-2"
+                    style="font-family: var(--font-logo); font-size: 1.25rem; color: #fff;">
+                    <img src="assets/images/logo.png" width="24" height="24" alt="C"> CODEER
+                </a>
+                <div style="height: 24px; width: 1px; background: var(--border);"></div>
+                <div class="nav-links">
+                    <a href="home.html" class="nav-link active">Dashboard</a>
+                    <a href="guide/index.html" class="nav-link">Guide</a>
+                    <a href="articles/index.html" class="nav-link">Articles</a>
+                    <a href="projects/index.html" class="nav-link">Projects</a>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="search-box">
+                    <i data-lucide="search" width="16" style="color: var(--text-dim);"></i>
+                    <input type="text" placeholder="Search resources..."
+                        style="background: transparent; border: none; color: #fff; outline: none; font-size: 0.9rem;">
+                </div>
+                <a href="create.html" class="btn btn-primary" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">
+                    <i data-lucide="plus" width="16"></i> Create
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="section" style="padding-top: 6rem;">
+        <div class="container">
+
+            <!-- Welcome Logic -->
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h1 class="mb-2">Overview</h1>
+                    <p style="color: var(--text-dim);">Welcome back to the community.</p>
+                </div>
+                <!-- Mini Activity Graph -->
+                <div class="card" style="padding: 0.5rem 1rem; min-width: 200px;">
+                    <div style="font-size: 0.75rem; color: var(--text-dim); margin-bottom: 0.5rem;">Commits (30d)</div>
+                    <div class="activity-graph">
+                        <div class="activity-bar" style="height: 30%;"></div>
+                        <div class="activity-bar" style="height: 50%;"></div>
+                        <div class="activity-bar" style="height: 20%;"></div>
+                        <div class="activity-bar" style="height: 70%;"></div>
+                        <div class="activity-bar" style="height: 40%;"></div>
+                        <div class="activity-bar" style="height: 90%;"></div>
+                        <div class="activity-bar" style="height: 60%;"></div>
+                        <div class="activity-bar" style="height: 30%;"></div>
+                        <div class="activity-bar" style="height: 20%;"></div>
+                        <div class="activity-bar" style="height: 80%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-4 mb-8">
+                <div class="card">
+                    <p
+                        style="font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px;">
+                        Articles</p>
+                    <h3 class="mt-4" id="stat-articles"></h3>
+                    <div class="flex items-center gap-2 mt-4" style="font-size: 0.8rem; color: #4ade80;">
+                        <i data-lucide="trending-up" width="14"></i> Live
+                    </div>
+                </div>
+                <div class="card">
+                    <p
+                        style="font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px;">
+                        Projects</p>
+                    <h3 class="mt-4" id="stat-projects"></h3>
+                    <div class="flex items-center gap-2 mt-4" style="font-size: 0.8rem; color: #4ade80;">
+                        <i data-lucide="rocket" width="14"></i> Live
+                    </div>
+                </div>
+                <div class="card">
+                    <p
+                        style="font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px;">
+                        Categories</p>
+                    <h3 class="mt-4" id="stat-categories">--</h3>
+                    <div class="flex items-center gap-2 mt-4" style="font-size: 0.8rem; color: #4ade80;">
+                        <i data-lucide="folder-open" width="14"></i> Auto-Discovered
+                    </div>
+                </div>
+                <div class="card">
+                    <p
+                        style="font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px;">
+                        System</p>
+                    <h3 class="mt-4">v2.0.0</h3>
+                    <div class="flex items-center gap-2 mt-4" style="font-size: 0.8rem; color: var(--text-dim);">
+                        <i data-lucide="check-circle" width="14"></i> Stable
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-2">
+                <!-- Trending -->
+                <div class="card p-0">
+                    <div style="padding: 1.5rem; border-bottom: 1px solid var(--border);">
+                        <h3>Trending Now</h3>
+                    </div>
+                    <div class="trend-list">
+                        <a href="projects/terra-lab.html" class="trend-card"
+                            style="text-decoration: none; color: inherit;">
+                            <div class="trend-rank">1</div>
+                            <div style="flex: 1;">
+                                <div style="font-weight: 500;">Terraform AWS Lab</div>
+                                <div style="font-size: 0.85rem; color: var(--text-dim);">Infrastructure / AWS</div>
+                            </div>
+                            <div class="badge">Hot</div>
+                        </a>
+                        <a href="articles/content/software/python/python-basics.html" class="trend-card"
+                            style="text-decoration: none; color: inherit;">
+                            <div class="trend-rank">2</div>
+                            <div style="flex: 1;">
+                                <div style="font-weight: 500;">Python Basics 101</div>
+                                <div style="font-size: 0.85rem; color: var(--text-dim);">Software / Python</div>
+                            </div>
+                            <div style="font-size: 0.8rem; color: var(--text-dim);">12k views</div>
+                        </a>
+                        <a href="articles/content/cloud/aws/deploy-ec2.html" class="trend-card"
+                            style="text-decoration: none; color: inherit;">
+                            <div class="trend-rank">3</div>
+                            <div style="flex: 1;">
+                                <div style="font-weight: 500;">Deploying EC2 Instances</div>
+                                <div style="font-size: 0.85rem; color: var(--text-dim);">Cloud / AWS</div>
+                            </div>
+                            <div style="font-size: 0.8rem; color: var(--text-dim);">8k views</div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div>
+                    <div class="card mb-4">
+                        <h3>Quick Actions</h3>
+                        <div class="grid grid-2 mt-4">
+                            <a href="create.html" class="btn btn-outline justify-center">
+                                <i data-lucide="pen-tool"></i> Write Article
+                            </a>
+                            <a href="create.html" class="btn btn-outline justify-center">
+                                <i data-lucide="rocket"></i> Submit Project
+                            </a>
+                            <a href="guide/index.html" class="btn btn-outline justify-center">
+                                <i data-lucide="book"></i> Read Guide
+                            </a>
+                            <a href="https://github.com/siddu-k/codeer" class="btn btn-outline justify-center">
+                                <i data-lucide="github"></i> Star Repo
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Categories -->
+                    <div class="card">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3>Browse Categories</h3>
+                            <div class="badge" id="stat-cats-count">Loading...</div>
+                        </div>
+                        <div id="category-grid" class="flex flex-col gap-2">
+                            <div style="padding: 1rem; color: var(--text-dim); text-align: center;">
+                                <i data-lucide="loader-2" class="animate-spin" width="24"></i>
+                                <p class="mt-2">Fetching from GitHub...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+    <script src="assets/js/dashboard.js"></script>
+</body>
+
+</html>

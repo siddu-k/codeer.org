@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deploying EC2 Instances - Codeer</title>
+    <!-- 4 levels up: articles/content/cloud/aws -> root -->
+    <link rel="icon" type="image/x-icon" href="../../../../assets/images/logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gugi&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../../../../assets/css/main.css">
+    <link rel="stylesheet" href="../../../../assets/css/components.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-con">
+            <div class="flex items-center gap-4">
+                <a href="../../../../index.html" class="flex items-center gap-2"
+                    style="font-family: var(--font-logo); font-size: 1.25rem; color: #fff;">
+                    <img src="../../../../assets/images/logo.png" width="24" height="24" alt="C"> CODEER
+                </a>
+                <div style="height: 24px; width: 1px; background: var(--border);"></div>
+                <div class="nav-links">
+                    <a href="../../../../home.html" class="nav-link">Dashboard</a>
+                    <a href="../../../../articles/index.html" class="nav-link active">Articles</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="section" style="padding-top: 6rem;">
+        <article class="container" style="max-width: 800px;">
+            <div class="badge mb-4">Cloud / AWS</div>
+            <h1 class="mb-4">Deploying EC2 Instances</h1>
+
+            <div class="flex items-center gap-4 mb-4" style="color: var(--text-dim); font-size: 0.9rem;">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="user" width="16"></i> siddu-k
+                </div>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="calendar" width="16"></i> January 18, 2026
+                </div>
+            </div>
+
+            <div style="height: 1px; background: var(--border); margin: 2rem 0;"></div>
+
+            <div class="content" style="font-size: 1.1rem; line-height: 1.8;">
+                <p>Amazon Elastic Compute Cloud (Amazon EC2) provides scalable computing capacity in the Amazon Web
+                    Services (AWS) Cloud. Using Amazon EC2 eliminates your need to invest in hardware up front, so you
+                    can develop and deploy applications faster.</p>
+                <br>
+                <h3>Prerequisites</h3>
+                <p>Before you begin, ensure you have an AWS account and CLI configured.</p>
+                <br>
+                <h3>Step 1: Launch Instance</h3>
+                <p>Open the EC2 Console and click "Launch Instance". Select Amazon Linux 2 AMI for this tutorial.</p>
+                <br>
+                <h3>Step 2: Key Pairs</h3>
+                <p>Create a new key pair or select an existing one. This is crucial for SSH access.</p>
+            </div>
+        </article>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

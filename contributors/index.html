@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contributors - Codeer</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/logo.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gugi&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-con">
+            <div class="flex items-center gap-4">
+                <a href="../index.html" class="flex items-center gap-2"
+                    style="font-family: var(--font-logo); font-size: 1.25rem; color: #fff;">
+                    <img src="../assets/images/logo.png" width="24" height="24" alt="C"> CODEER
+                </a>
+                <div style="height: 24px; width: 1px; background: var(--border);"></div>
+                <div class="nav-links">
+                    <a href="../home.html" class="nav-link">Dashboard</a>
+                    <a href="../guide/index.html" class="nav-link">Guide</a>
+                    <a href="../articles/index.html" class="nav-link">Articles</a>
+                    <a href="../projects/index.html" class="nav-link">Projects</a>
+                    <a href="../contributors/index.html" class="nav-link active">Contributors</a>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="../create.html" class="btn btn-primary" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">
+                    <i data-lucide="plus" width="16"></i> Create
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="section" style="padding-top: 6rem;">
+        <div class="container">
+            <h1 class="mb-4">Top Contributors</h1>
+
+            <div class="grid grid-4">
+
+                <a href="../profiles/siddu-k.html" class="card text-center" style="text-decoration: none;">
+                    <div
+                        style="width: 80px; height: 80px; background: #333; border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 1px solid var(--border);">
+                        SK
+                    </div>
+                    <h3>Siddu K</h3>
+                    <p class="mt-4" style="font-size: 0.9rem;">Cloud Architect</p>
+                    <div class="badge mt-4">54 Contributions</div>
+                </a>
+
+                <div class="card text-center">
+                    <div
+                        style="width: 80px; height: 80px; background: #333; border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 1px solid var(--border);">
+                        RD
+                    </div>
+                    <h3>Rahul Dev</h3>
+                    <p class="mt-4" style="font-size: 0.9rem;">Full Stack Dev</p>
+                    <div class="badge mt-4">32 Contributions</div>
+                </div>
+
+                <div class="card text-center">
+                    <div
+                        style="width: 80px; height: 80px; background: #333; border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 1px solid var(--border);">
+                        AC
+                    </div>
+                    <h3>Ankit Cloud</h3>
+                    <p class="mt-4" style="font-size: 0.9rem;">Kubernetes Engineer</p>
+                    <div class="badge mt-4">18 Contributions</div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
